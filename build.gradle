@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = "io.ktor.server.netty.DevelopmentEngine"
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+compileKotlin {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.20"
+    compile "io.ktor:ktor-server-netty:1.1.2"
+    compile "io.ktor:ktor-websockets:1.1.2"
+    compile "ch.qos.logback:logback-classic:1.2.3"
+    compile "org.apache.pulsar:pulsar-client:2.2.1"
+    testCompile "io.ktor:ktor-server-test-host:1.1.2"
+}
